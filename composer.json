@@ -29,5 +29,10 @@
         "branch-alias": {
             "dev-3.3" : "3.3.x-dev"
         }
+    },
+    "autoload" : {
+        "psr-4" : {
+            "App\\DebugBundle\\": "src/DebugBundle"
+        }
     }
 }
