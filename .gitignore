@@ -29,3 +29,5 @@ __*
 Thumbs.db
 Vagrantfile
 .php_cs.cache
+
+pimple.json
