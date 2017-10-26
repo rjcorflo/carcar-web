@@ -28,3 +28,6 @@ npm-debug.log
 __*
 Thumbs.db
 Vagrantfile
+.php_cs.cache
+
+pimple.json
