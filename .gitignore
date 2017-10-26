@@ -5,6 +5,7 @@
 composer.phar
 php-cs-fixer.phar
 scrutinizer.phar
+deployer.phar
 
 # NPM, Gulp and Grunt stuff
 .sass-cache
