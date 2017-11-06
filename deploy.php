@@ -15,9 +15,7 @@ set('keep_releases', 3);
 set('ssh_multiplexing', false);
 
 // Shared files/dirs between deploys 
-set('shared_files', [
-    'app/config/config_local.yml'
-]);
+set('shared_files', []);
 set('shared_dirs', [
     'app/database',
     'public/files',
@@ -37,7 +35,11 @@ host('solus-dev')
     ->set('deploy_path', '~/applications/{{application}}')
     ->set('branch', 'development')
     ->configFile('~/.ssh/config');
-    
+
+desc('Prepare configuration file');
+task('bolt:config', function() {
+    run('cp ~/applications/{{application}}/config_local.yml {{release_path}}/app/config/config_local.yml');
+});
 
 // Tasks
 desc('Deploy your project');
@@ -47,6 +49,7 @@ task('deploy', [
     'deploy:lock',
     'deploy:release',
     'deploy:update_code',
+    'bolt:config',
     'deploy:shared',
     'deploy:writable',
     'deploy:vendors',
