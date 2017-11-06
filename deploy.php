@@ -11,10 +11,18 @@ set('repository', 'https://github.com/rjcorflo/carcar-web.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', false);
+set('keep_releases', 3);
+set('ssh_multiplexing', false);
 
 // Shared files/dirs between deploys 
-set('shared_files', []);
-set('shared_dirs', []);
+set('shared_files', [
+    'app/config/config_local.yml'
+]);
+set('shared_dirs', [
+    'app/database',
+    'public/files',
+    'public/thumbs'
+]);
 
 // Writable dirs by web server 
 set('writable_dirs', []);
@@ -32,7 +40,6 @@ host('solus-dev')
     
 
 // Tasks
-
 desc('Deploy your project');
 task('deploy', [
     'deploy:info',
