@@ -4,9 +4,9 @@ namespace App\Google\Service;
 
 class DataLayer
 {
-
     /** @var array */
     protected $data = [];
+
     /**
      * Push an array to the DataLayer
      *
@@ -18,6 +18,7 @@ class DataLayer
             $this->pushData($key, $value);
         }
     }
+
     /**
      * Push a single key and value to the DataLayer
      *
@@ -31,6 +32,7 @@ class DataLayer
             $this->data[$key] = $value;
         }
     }
+
     /**
      * Get the actual script tag with the current data in it
      *
@@ -38,25 +40,8 @@ class DataLayer
      */
     public function getDataLayerScript()
     {
-        $data = json_encode($this->data);
-        return "<script>dataLayer = {$data} ;</script>";
-    }
-    /**
-     * Convert data array to string
-     */
-    private function arrayToString($data)
-    {
-        if (empty($data)) {
-            return '';
-        }
-        // base of datalayer
-        $data_layer = '';
-        // through the data and create the DataLayer string
-        foreach ($data as $key => $value) {
-            $data_layer .= "'${key}': '" . htmlentities($value, ENT_QUOTES) . "',";
-        }
-        // Remove last comma
-        $data_layer = substr($data_layer, 0, -1);
-        return $data_layer;
+        $json[] = $this->data;
+        $data = json_encode($json);
+        return "<script>dataLayer = {$data};</script>";
     }
 }

@@ -8,7 +8,6 @@ use Bolt\Asset\Target;
 use Bolt\Extension\SimpleExtension;
 use Silex\Application;
 
-
 class GoogleBundle extends SimpleExtension
 {
     /**
@@ -35,7 +34,7 @@ class GoogleBundle extends SimpleExtension
     /**
      * @return array
      */
-    function registerAssets()
+    public function registerAssets()
     {
         $assets = [];
 
@@ -43,14 +42,14 @@ class GoogleBundle extends SimpleExtension
 
         if ($config['container_id'] != 'a') {
             $assets[] = Snippet::create()
-                ->setCallback([$this, 'insertDataLayer'])
-                ->setLocation(Target::START_OF_HEAD)
-                ->setPriority(1);
-
-            $assets[] = Snippet::create()
                 ->setCallback([$this, 'insertAnalyticsInHead'])
                 ->setLocation(Target::BEFORE_HEAD_META)
                 ->setPriority(50);
+
+            $assets[] = Snippet::create()
+                ->setCallback([$this, 'insertDataLayer'])
+                ->setLocation(Target::START_OF_HEAD)
+                ->setPriority(1);
 
             $assets[] = Snippet::create()
                 ->setCallback([$this, 'insertAnalyticsInBody'])
