@@ -8,7 +8,7 @@
 class RoboFile extends \Robo\Tasks
 {
     /**
-     * Launch php built-in server
+     * Launch php built-in server.
      */
     public function developmentServer()
     {
@@ -33,6 +33,9 @@ class RoboFile extends \Robo\Tasks
         $this->taskExec('dep')->dir('vendor/bin')->arg('deploy')->arg('production')->run();
     }
 
+    /**
+     * Watch js and scss assets.
+     */
     public function assetCompile()
     {
         $this->taskWatch()
