@@ -2,6 +2,6 @@
 
 return [
     'extensions' => [
-        'App\DebugBundle\DebugBundleExtension'
+        'App\Google\GoogleBundle'
     ]
 ];
