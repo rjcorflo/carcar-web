@@ -15,6 +15,9 @@ class GoogleBundle extends SimpleExtension
      */
     private $dataLayer;
 
+    /**
+     * @inheritdoc
+     */
     protected function registerServices(Application $app)
     {
         $app['google.datalayer'] = $app->share(
@@ -24,6 +27,9 @@ class GoogleBundle extends SimpleExtension
         );
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function registerTwigFunctions()
     {
         return [
@@ -32,7 +38,7 @@ class GoogleBundle extends SimpleExtension
     }
 
     /**
-     * @return array
+     * @inheritdoc
      */
     public function registerAssets()
     {
@@ -40,7 +46,7 @@ class GoogleBundle extends SimpleExtension
 
         $config = $this->getConfig();
 
-        if ($config['container_id'] != 'a') {
+        if ($config['container_id'] != '') {
             $assets[] = Snippet::create()
                 ->setCallback([$this, 'insertAnalyticsInHead'])
                 ->setLocation(Target::BEFORE_HEAD_META)
@@ -60,12 +66,17 @@ class GoogleBundle extends SimpleExtension
         return $assets;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function boot(Application $app)
     {
         $this->dataLayer = $app['google.datalayer'];
     }
 
-
+    /**
+     * @return string
+     */
     public function insertDataLayer()
     {
         return $this->dataLayer->getDataLayerScript();
@@ -104,6 +115,9 @@ class GoogleBundle extends SimpleExtension
         ];
     }
 
+    /**
+     * @param array $data
+     */
     public function dataLayerPush(array $data)
     {
         $this->dataLayer->pushDataArray($data);
