@@ -31,5 +31,13 @@
         "post-autoload-dump": "Bolt\\Composer\\EventListener\\PackageEventListener::dump",
         "post-package-install": "Bolt\\Composer\\EventListener\\PackageEventListener::handle",
         "post-package-update": "Bolt\\Composer\\EventListener\\PackageEventListener::handle"
+    },
+    "require": {
+        "bacboslab/menueditor": "^3.2",
+        "bobdenotter/seo": "^1.0",
+        "bolt/boltforms": "^4.1",
+        "bolt/sitemap": "^2.2",
+        "rossriley/formeditor": "^4.0",
+        "soapbox/taxonomyeditor": "^0.3.1"
     }
 }
