@@ -40,18 +40,20 @@ class RoboFile extends \Robo\Tasks
     {
         $this->taskWatch()
             ->monitor('public/theme/materialize/_scss', function () {
-                $this->taskScss([
-                    'public/theme/materialize/_scss/materialize.scss' => 'public/theme/materialize/css/materialize.css'
-                ])
-                    ->importDir('public/theme/materialize/_scss')
-                    ->run();
-
-                $this->taskMinify('public/theme/materialize/css/materialize.css')
-                    ->to('public/theme/materialize/css/materialize.min.css')
-                    ->run();
+                $collection = $this->collectionBuilder();
+                $collection->addTaskList(
+                    [
+                        $this->taskScss([
+                            'public/theme/materialize/_scss/materialize.scss' => 'public/theme/materialize/css/materialize.css'
+                        ])->importDir('public/theme/materialize/_scss'),
+                        $this->taskMinify('public/theme/materialize/css/materialize.css')
+                            ->to('public/theme/materialize/css/materialize.min.css')
+                    ]
+                )->run();
             })
             ->monitor('public/theme/materialize/_js', function () {
                 $this->taskConcat(['public/theme/materialize/_js/*.js'])->to('public/theme/materialize/js/app.js')->run();
+                $this->taskMinify('public/theme/materialize/js/app.js')->to('public/theme/materialize/js/app.min.js')->run();
             })
             ->run();
     }

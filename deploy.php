@@ -17,6 +17,7 @@ set('ssh_multiplexing', false);
 // Shared files/dirs between deploys 
 set('shared_files', []);
 set('shared_dirs', [
+    'app/config/extensions',
     'app/database',
     'public/files',
     'public/thumbs'

@@ -1,4 +1,5 @@
 # PHP files and folders
+/app/config/extensions
 /vendor
 
 # Common developer tools
