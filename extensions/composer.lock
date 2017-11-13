@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4e4e5b8bd7c8450ab1e54e2d3df7d850",
+    "content-hash": "fa5478569a6f177543cfcd0f662f91e2",
     "packages": [
         {
             "name": "bacboslab/menueditor",
@@ -347,64 +347,6 @@
                 "issues": "https://github.com/google/recaptcha/issues"
             },
             "time": "2017-03-09T18:44:34+00:00"
-        },
-        {
-            "name": "rossriley/formeditor",
-            "version": "4.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rossriley/bolt-extension-formeditor.git",
-                "reference": "b667b40a35f9ebd44524497d2dcfee01b8909777"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rossriley/bolt-extension-formeditor/zipball/b667b40a35f9ebd44524497d2dcfee01b8909777",
-                "reference": "b667b40a35f9ebd44524497d2dcfee01b8909777",
-                "shasum": ""
-            },
-            "require": {
-                "bolt/bolt": ">3.0,<4.0",
-                "bolt/boltforms": "^4.0"
-            },
-            "type": "bolt-extension",
-            "extra": {
-                "bolt-assets": "assets",
-                "bolt-screenshots": [
-                    "screenshot.png",
-                    "screenshot2.png"
-                ],
-                "bolt-class": "Bolt\\Extensions\\Ross\\FormEditor\\Extension",
-                "branch-alias": {
-                    "dev-v4": "4.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Bolt\\Extensions\\Ross\\FormEditor\\": "src",
-                    "Bolt\\Extensions\\Ross\\FormEditor\\Tests\\": "tests"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ross Riley",
-                    "email": "riley.ross@gmail.com"
-                }
-            ],
-            "description": "An extension to Bolt Forms to provide a basic UI",
-            "keywords": [
-                "boltforms",
-                "editor",
-                "forms",
-                "ui"
-            ],
-            "support": {
-                "source": "https://github.com/rossriley/bolt-extension-formeditor/tree/4.0.2",
-                "issues": "https://github.com/rossriley/bolt-extension-formeditor/issues"
-            },
-            "time": "2017-09-30T21:18:13+00:00"
         },
         {
             "name": "soapbox/taxonomyeditor",
