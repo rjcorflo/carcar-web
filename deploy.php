@@ -40,6 +40,7 @@ host('solus-dev')
 desc('Prepare configuration file');
 task('bolt:config', function() {
     run('cp ~/applications/{{application}}/config_local.yml {{release_path}}/app/config/config_local.yml');
+    run('rm -rf {{release_path}}/public/theme/materialize/_js {{release_path}}/public/theme/materialize/_scss');
 });
 
 // Tasks

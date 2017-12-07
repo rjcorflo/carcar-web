@@ -67,14 +67,6 @@ class GoogleBundle extends SimpleExtension
     }
 
     /**
-     * @inheritdoc
-     */
-    public function boot(Application $app)
-    {
-        $this->dataLayer = $app['google.datalayer'];
-    }
-
-    /**
      * @return string
      */
     public function insertDataLayer()
@@ -120,6 +112,6 @@ class GoogleBundle extends SimpleExtension
      */
     public function dataLayerPush(array $data)
     {
-        $this->dataLayer->pushDataArray($data);
+        $this->container['google.datalayer']->pushDataArray($data);
     }
 }
