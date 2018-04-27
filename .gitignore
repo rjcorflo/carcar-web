@@ -1,10 +1,12 @@
 # PHP files and folders
+/app/config/extensions
 /vendor
 
 # Common developer tools
 composer.phar
 php-cs-fixer.phar
 scrutinizer.phar
+deployer.phar
 
 # NPM, Gulp and Grunt stuff
 .sass-cache
@@ -30,4 +32,5 @@ Thumbs.db
 Vagrantfile
 .php_cs.cache
 
+# Pimple export
 pimple.json

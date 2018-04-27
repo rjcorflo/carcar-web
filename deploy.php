@@ -11,10 +11,17 @@ set('repository', 'https://github.com/rjcorflo/carcar-web.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', false);
+set('keep_releases', 3);
+set('ssh_multiplexing', false);
 
 // Shared files/dirs between deploys 
 set('shared_files', []);
-set('shared_dirs', []);
+set('shared_dirs', [
+    'app/config/extensions',
+    'app/database',
+    'public/files',
+    'public/thumbs'
+]);
 
 // Writable dirs by web server 
 set('writable_dirs', []);
@@ -29,10 +36,14 @@ host('solus-dev')
     ->set('deploy_path', '~/applications/{{application}}')
     ->set('branch', 'development')
     ->configFile('~/.ssh/config');
-    
+
+desc('Prepare configuration file');
+task('bolt:config', function() {
+    run('cp ~/applications/{{application}}/config_local.yml {{release_path}}/app/config/config_local.yml');
+    run('rm -rf {{release_path}}/public/theme/materialize/_js {{release_path}}/public/theme/materialize/_scss');
+});
 
 // Tasks
-
 desc('Deploy your project');
 task('deploy', [
     'deploy:info',
@@ -40,6 +51,7 @@ task('deploy', [
     'deploy:lock',
     'deploy:release',
     'deploy:update_code',
+    'bolt:config',
     'deploy:shared',
     'deploy:writable',
     'deploy:vendors',
